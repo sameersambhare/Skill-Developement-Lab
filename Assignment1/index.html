@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Sambhare - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+            color: white;
+            padding: 100px 0 50px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #1a1a1a;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .project-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-tags {
+            margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            display: inline-block;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .certification-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .certification-content {
+            padding: 20px;
+        }
+
+        .certification-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .certification-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .certification-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://github.com/sameersambhare.png" alt="Sameer Sambhare" class="profile-img">
+            <h1 class="name">Sameer Sambhare</h1>
+            <p class="title">Full Stack Developer | Computer Engineering Student at PCCOE</p>
+            <div class="social-links">
+                <a href="https://github.com/sameersambhare" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/sameersambhare/" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/sameer_sambhare/" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>🎓 Computer Engineering student at Pimpri-Chinchwad College of Engineering, Pune</p>
+                <p>🔭 Currently working on NEXT.js projects and exploring full-stack development</p>
+                <p>💡 Passionate about web technologies and creating innovative solutions</p>
+                
+                <div class="skills">
+                    <span class="skill-tag">NextJs</span>
+                    <span class="skill-tag">MERN Stack</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">R</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-content">
+                        <h3 class="certification-title">Elements of AI</h3>
+                        <p class="certification-date">Completed: November 2022</p>
+                        <p class="certification-description">Successfully completed the Elements of AI Certification, an online course offering 2 ECTS credits.</p>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-content">
+                        <h3 class="certification-title">Forage Virtual Experience Program</h3>
+                        <p class="certification-description">Completed virtual work experience program focusing on practical industry skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">TODO-APP</h3>
+                        <p class="project-description">A modern todo list application built with JavaScript, HTML, and CSS. Features task management functionality with a clean user interface.</p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">HTML</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/TODO-APP" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Hacktoberfest PCCOE ACM 2024</h3>
+                        <p class="project-description">Official repository for PCCOE ACM Student Chapter's Hacktoberfest 2024. A platform for open-source contributions and collaboration.</p>
+                        <a href="https://github.com/sameersambhare/Hactoberfest-Pccoe-Acm-2024" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Ochi Designs React</h3>
+                        <p class="project-description">A React.js frontend project showcasing modern web design implementation with responsive layouts and interactive features.</p>
+                        <div class="project-tags">
+                            <span class="tag">React.js</span>
+                            <span class="tag">Frontend</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Ochi-Designs-React" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Proficiency Excellence Analyzer</h3>
+                        <p class="project-description">A comprehensive placement management system for analyzing and tracking student proficiency and excellence in various domains.</p>
+                        <div class="project-tags">
+                            <span class="tag">Placement Management</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Proficiency-Excellence-Analyzer" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Vista Hi Designs</h3>
+                        <p class="project-description">An e-commerce website design project featuring modern UI/UX principles and responsive design patterns.</p>
+                        <div class="project-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Web Design</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Vista-Hi-Designs" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Money Tracker Express</h3>
+                        <p class="project-description">A web application built with Express.js for tracking personal finances and managing expenses.</p>
+                        <div class="project-tags">
+                            <span class="tag">Express.js</span>
+                            <span class="tag">Node.js</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Money_Tracker_Express" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Registration Form Express</h3>
+                        <p class="project-description">A user registration system built with Express.js, featuring form validation and data management.</p>
+                        <div class="project-tags">
+                            <span class="tag">Express.js</span>
+                            <span class="tag">Web Forms</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Registration_Form_Express" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Microprocessor Assignments</h3>
+                        <p class="project-description">Collection of assembly language programming assignments and implementations for microprocessor lab sessions.</p>
+                        <div class="project-tags">
+                            <span class="tag">Assembly</span>
+                            <span class="tag">Microprocessor</span>
+                        </div>
+                        <a href="https://github.com/sameersambhare/Microprocessor_Assignments" class="project-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sameer Sambhare. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
