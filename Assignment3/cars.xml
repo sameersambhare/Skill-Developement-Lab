@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CarInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cars.xsd">
+  <Car VIN="1HGCM82633A123456">
+    <Make>Toyota</Make>
+    <Model>Camry</Model>
+    <Year>2022</Year>
+    <Color>Silver</Color>
+    <Features>
+      <Feature1>Bluetooth Connectivity</Feature1>
+      <Feature2>Backup Camera</Feature2>
+      <Feature3>Heated Seats</Feature3>
+      <Feature4>Sunroof</Feature4>
+      <Feature5>Adaptive Cruise Control</Feature5>
+    </Features>
+  </Car>
+</CarInfo>
