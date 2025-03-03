@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration and Login Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(45, 45, 45, 0.9);
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .container h2 {
+      margin-bottom: 30px;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #cccccc;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .form-group i {
+      position: absolute;
+      left: 12px;
+      top: 38px;
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      border: 2px solid #444444;
+      border-radius: 8px;
+      background-color: #3d3d3d;
+      color: #ffffff;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #007bff;
+      outline: none;
+      background-color: #454545;
+    }
+
+    .form-group input:focus + i {
+      color: #007bff;
+    }
+
+    .form-group .error {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .form-group.invalid input {
+      border-color: #ff4d4d;
+    }
+
+    .form-group.invalid .error {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toggle-form {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    .toggle-form a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-form a:hover {
+      color: #0056b3;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .btn.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin: -10px 0 0 -10px;
+      border: 2px solid #ffffff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: button-loading 0.8s linear infinite;
+    }
+
+    @keyframes button-loading {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #registration-form, #login-form {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.4s ease;
+    }
+
+    #registration-form.hidden, #login-form.hidden {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Registration Form -->
+    <div id="registration-form">
+      <h2>Create Account</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="reg-name">Full Name</label>
+          <input type="text" id="reg-name" name="name" required>
+          <i class="fas fa-user"></i>
+          <div class="error" id="name-error">Name must contain only alphabets.</div>
+        </div>
+        <div class="form-group">
+          <label for="reg-mobile">Mobile Number</label>
+          <input type="text" id="reg-mobile" name="mobile" required>
+          <i class="fas fa-phone"></i>
+          <div class="error" id="mobile-error">Mobile number must be 10 digits.</div>
+        </div>
+        <div class="form-group">
+          <label for="reg-address">Address</label>
+          <input type="text" id="reg-address" name="address" required>
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="error" id="address-error">Address is required.</div>
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" name="password" required>
+          <i class="fas fa-lock"></i>
+          <div class="error" id="password-error">
+            Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+          </div>
+        </div>
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+      <div class="toggle-form">
+        Already have an account? <a href="#" id="show-login">Sign in</a>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" style="display: none;">
+      <h2>Welcome Back</h2>
+      <form id="login-form-submit">
+        <div class="form-group">
+          <label for="login-mobile">Mobile Number</label>
+          <input type="text" id="login-mobile" name="mobile" required>
+          <i class="fas fa-phone"></i>
+          <div class="error" id="login-mobile-error">Mobile number is required.</div>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+          <i class="fas fa-lock"></i>
+          <div class="error" id="login-password-error">Password is required.</div>
+        </div>
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+      <div class="toggle-form">
+        Don't have an account? <a href="#" id="show-register">Create one</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Validation functions
+    function validateName(name) {
+      const nameRegex = /^[A-Za-z\s]+$/;
+      return nameRegex.test(name);
+    }
+
+    function validateMobile(mobile) {
+      const mobileRegex = /^[0-9]{10}$/;
+      return mobileRegex.test(mobile);
+    }
+
+    function validateAddress(address) {
+      return address.trim().length > 0;
+    }
+
+    function validatePassword(password) {
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      return passwordRegex.test(password);
+    }
+
+    function getPasswordErrors(password) {
+      const errors = [];
+      
+      if (password.length < 8) {
+        errors.push("Password must be at least 8 characters long");
+      }
+      
+      if (!/[A-Z]/.test(password)) {
+        errors.push("Missing uppercase letter");
+      }
+      
+      if (!/[a-z]/.test(password)) {
+        errors.push("Missing lowercase letter");
+      }
+      
+      if (!/\d/.test(password)) {
+        errors.push("Missing number");
+      }
+      
+      if (!/[@$!%*?&]/.test(password)) {
+        errors.push("Missing special character (@, $, !, %, *, ?, &)");
+      }
+      
+      return errors;
+    }
+
+    // Real-time validation for registration form
+    document.getElementById('reg-name').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('name-error');
+      
+      if (!validateName(this.value)) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    document.getElementById('reg-mobile').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('mobile-error');
+      
+      if (!validateMobile(this.value)) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    document.getElementById('reg-address').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('address-error');
+      
+      if (!validateAddress(this.value)) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    document.getElementById('reg-password').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('password-error');
+      
+      const passwordErrors = getPasswordErrors(this.value);
+      
+      if (passwordErrors.length > 0) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+        errorElement.innerHTML = passwordErrors.join('<br>');
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    // Real-time validation for login form
+    document.getElementById('login-mobile').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('login-mobile-error');
+      
+      if (!validateMobile(this.value)) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    document.getElementById('login-password').addEventListener('input', function(e) {
+      const formGroup = this.parentElement;
+      const errorElement = document.getElementById('login-password-error');
+      
+      if (this.value.length === 0) {
+        formGroup.classList.add('invalid');
+        errorElement.style.display = 'block';
+      } else {
+        formGroup.classList.remove('invalid');
+        errorElement.style.display = 'none';
+      }
+    });
+
+    // Form submission handlers
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('reg-name').value;
+      const mobile = document.getElementById('reg-mobile').value;
+      const address = document.getElementById('reg-address').value;
+      const password = document.getElementById('reg-password').value;
+
+      if (validateName(name) && validateMobile(mobile) && validateAddress(address) && validatePassword(password)) {
+        // Store user data in localStorage
+        const userData = {
+          name: name,
+          mobile: mobile,
+          address: address,
+          password: password
+        };
+        
+        localStorage.setItem(mobile, JSON.stringify(userData));
+        
+        // Show success message
+        alert('Registration successful! You can now login with your mobile number and password.');
+        
+        // Reset the form
+        document.getElementById('register-form').reset();
+        
+        // Redirect to login form
+        document.getElementById('registration-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+      } else {
+        // Validate all fields and show errors
+        const nameInput = document.getElementById('reg-name');
+        const mobileInput = document.getElementById('reg-mobile');
+        const addressInput = document.getElementById('reg-address');
+        const passwordInput = document.getElementById('reg-password');
+        
+        // Trigger validation for each field
+        const nameEvent = new Event('input', { bubbles: true });
+        const mobileEvent = new Event('input', { bubbles: true });
+        const addressEvent = new Event('input', { bubbles: true });
+        const passwordEvent = new Event('input', { bubbles: true });
+        
+        nameInput.dispatchEvent(nameEvent);
+        mobileInput.dispatchEvent(mobileEvent);
+        addressInput.dispatchEvent(addressEvent);
+        passwordInput.dispatchEvent(passwordEvent);
+      }
+    });
+
+    document.getElementById('login-form-submit').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const mobile = document.getElementById('login-mobile').value;
+      const password = document.getElementById('login-password').value;
+
+      if (validateMobile(mobile) && password.length > 0) {
+        // Check if user exists in localStorage
+        const userData = localStorage.getItem(mobile);
+        
+        if (userData) {
+          const user = JSON.parse(userData);
+          
+          if (user.password === password) {
+            alert('Login successful! Welcome back, ' + user.name);
+            // You can redirect to another page or perform other actions here
+          } else {
+            alert('Incorrect password. Please try again.');
+          }
+        } else {
+          alert('No account found with this mobile number. Please register first.');
+        }
+      } else {
+        // Validate all fields and show errors
+        const mobileInput = document.getElementById('login-mobile');
+        const passwordInput = document.getElementById('login-password');
+        
+        // Trigger validation for each field
+        const mobileEvent = new Event('input', { bubbles: true });
+        const passwordEvent = new Event('input', { bubbles: true });
+        
+        mobileInput.dispatchEvent(mobileEvent);
+        passwordInput.dispatchEvent(passwordEvent);
+      }
+    });
+
+    // Toggle between registration and login forms
+    document.getElementById('show-login').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('registration-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
